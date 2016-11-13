@@ -17,10 +17,12 @@
 ## Populating the database:
 
 To populate AirBnb Data:
-1. Go to the [AirBnb data page](insideairbnb.com/get-the-data.html)
-2. Scroll down to New York City data, download `listings.csv.gz`
-3. Extract the file on your computer
-4. On the console, run `$ rake populate:airbnb[path/to/file]`
+Go to the [AirBnb data page](insideairbnb.com/get-the-data.html).
+Scroll down to New York City data, download `listings.csv.gz`.
+Extract the file on your computer.
+On the console, run:
+
+`$ rake populate:airbnb[path/to/file]`
 
 That last step should print the output when its done.
 

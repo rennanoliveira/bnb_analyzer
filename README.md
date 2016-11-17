@@ -22,7 +22,7 @@ Scroll down to New York City data, download `listings.csv.gz`.
 Extract the file on your computer.
 On the console, run:
 
-`$ rake populate:airbnb[path/to/file]`
+`$ thor populate:airbnb path/to/filename.csv`
 
 That last step should print the output when its done.
 

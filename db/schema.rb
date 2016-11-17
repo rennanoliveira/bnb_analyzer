@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112185257) do
+ActiveRecord::Schema.define(version: 20161116140525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20161112185257) do
   create_table "air_bnbs", force: :cascade do |t|
     t.string   "name"
     t.string   "listing_url"
-    t.integer  "scrape_id"
+    t.bigint   "scrape_id"
     t.date     "last_scraped"
     t.text     "summary"
     t.text     "space"

@@ -5,7 +5,6 @@ class CreateAirBnbs < ActiveRecord::Migration[5.0]
       t.string :listing_url
       t.integer :scrape_id
       t.date :last_scraped
-      t.string :name
       t.text :summary
       t.text :space
       t.text :description

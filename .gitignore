@@ -22,4 +22,6 @@
 
 # Ignore IDE files
 .idea
-airbnb_ny.csv
+
+# Ignore all csv files
+*.csv

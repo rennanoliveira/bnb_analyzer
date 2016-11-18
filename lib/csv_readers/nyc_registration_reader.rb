@@ -41,3 +41,8 @@ module CSVReaders
 
   end
 end
+
+# {:boro=>"BROOKLYN", :block=>3199, :lot=>6, :bin=>3072758, :registration_id=>336487,
+#  :building_id=>315974, :boro_id=>3, :house_number=>73, :low_house_number=>73,
+#  :high_house_number=>73, :address_street=>"IRVING AVENUE", :address_code=>52130,
+#  :zip_code=>11237, :community_board=>4, :registered_on=>"05/14/2012", :registration_ends_on=>"09/15/2013"}

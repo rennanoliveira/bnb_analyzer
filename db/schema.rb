@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116140525) do
+ActiveRecord::Schema.define(version: 20161118151026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,27 @@ ActiveRecord::Schema.define(version: 20161116140525) do
     t.decimal  "longitude",                    precision: 10, scale: 6
     t.datetime "created_at",                                            null: false
     t.datetime "updated_at",                                            null: false
+  end
+
+  create_table "multiple_dwelling_registrations", force: :cascade do |t|
+    t.integer  "registration_id"
+    t.string   "boro"
+    t.integer  "boro_id"
+    t.integer  "block"
+    t.integer  "lot"
+    t.integer  "bin"
+    t.integer  "building_id"
+    t.integer  "house_number"
+    t.integer  "low_house_number"
+    t.integer  "high_house_number"
+    t.string   "address_street"
+    t.integer  "address_code"
+    t.integer  "zip_code"
+    t.integer  "community_board"
+    t.date     "registered_on"
+    t.date     "registration_ends_on"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
 end

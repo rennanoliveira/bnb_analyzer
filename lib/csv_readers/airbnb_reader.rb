@@ -1,7 +1,7 @@
 require 'csv'
 
-module CSVExt
-  class CSVReader
+module CSVReaders
+  class AirbnbReader
 
     # Listing only the headers we want (AirBnb gives us many, many more)
     HEADERS = [

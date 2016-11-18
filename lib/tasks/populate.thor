@@ -1,4 +1,4 @@
-require_relative '../csv_ext/csv_reader'
+require_relative '../csv_readers/airbnb_reader'
 require 'thor/rails'
 
 class Populate < Thor
@@ -9,7 +9,7 @@ class Populate < Thor
   def airbnb(file_path)
     ::AirBnb.count
     puts "Arquivo passado: #{file_path}"
-    csv = ::CSVExt::CSVReader.new(file_path)
+    csv = ::CSVReaders::AirbnbReader.new(file_path)
     puts 'Lendo arquivo...'
     airbnb_hash = csv.to_hash
     puts 'Criando entradas...'

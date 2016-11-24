@@ -3,7 +3,7 @@ require 'csv'
 module CSVReaders
   class NYCRegistrationReader
 
-    # Listing only the headers we want
+    # Renaming headers to match ruby object
     RENAMINGS = {
         registrationid: :registration_id,
         buildingid: :building_id,
@@ -28,6 +28,8 @@ module CSVReaders
         hash = enum.to_h
         hash.keys.each do |k|
           hash[RENAMINGS[k]] = hash.delete(k) if RENAMINGS[k]
+          convert_field(hash, :registered_on) if hash[:registered_on].present?
+          convert_field(hash, :registration_ends_on) if hash[:registration_ends_on].present?
         end
         hash
       end
@@ -39,10 +41,11 @@ module CSVReaders
       @csv ||= CSV.read(@path, headers: true, header_converters: :symbol, converters: [:all])
     end
 
+    def convert_field(hash, field)
+      if hash[field].include?('/')
+        hash[field] = Date.strptime(hash[field], '%m/%d/%Y').to_s
+      end
+    end
+
   end
 end
-
-# {:boro=>"BROOKLYN", :block=>3199, :lot=>6, :bin=>3072758, :registration_id=>336487,
-#  :building_id=>315974, :boro_id=>3, :house_number=>73, :low_house_number=>73,
-#  :high_house_number=>73, :address_street=>"IRVING AVENUE", :address_code=>52130,
-#  :zip_code=>11237, :community_board=>4, :registered_on=>"05/14/2012", :registration_ends_on=>"09/15/2013"}

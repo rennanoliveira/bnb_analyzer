@@ -1,6 +1,3 @@
-require_relative '../csv_readers/airbnb_reader'
-require_relative '../csv_readers/nyc_registration_reader'
-
 require 'thor/rails'
 
 class RoomTypes < Thor

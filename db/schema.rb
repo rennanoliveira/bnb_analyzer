@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125161616) do
+ActiveRecord::Schema.define(version: 20161125164838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,8 +86,10 @@ ActiveRecord::Schema.define(version: 20161125161616) do
     t.integer  "community_board"
     t.date     "registered_on"
     t.date     "registration_ends_on"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "neighbourhood_group_id"
+    t.index ["neighbourhood_group_id"], name: "index_multiple_dwelling_registrations_on_neighbourhood_group_id", using: :btree
   end
 
   create_table "neighbourhood_groups", force: :cascade do |t|
@@ -110,4 +112,5 @@ ActiveRecord::Schema.define(version: 20161125161616) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "multiple_dwelling_registrations", "neighbourhood_groups"
 end

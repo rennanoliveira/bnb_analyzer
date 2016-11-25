@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe MultipleDwellingRegistration, type: :model do
+
+  describe 'relations' do
+    it { is_expected.to belong_to :neighbourhood_group }
+  end
+
   describe 'validations' do
     [:registration_id,
      :boro,
@@ -18,7 +23,7 @@ RSpec.describe MultipleDwellingRegistration, type: :model do
      :community_board,
      :registered_on,
      :registration_ends_on].each do |attr|
-        it { is_expected.to validate_presence_of attr }
-      end
+      it { is_expected.to validate_presence_of attr }
+    end
   end
 end

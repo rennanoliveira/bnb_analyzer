@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe NeighbourhoodGroup, type: :model do
 
   describe 'relations' do
+    it { is_expected.to have_many :multiple_dwelling_registrations }
     it { is_expected.to have_many :neighbourhoods }
     it { is_expected.to have_many(:air_bnbs).
         through(:neighbourhoods) 

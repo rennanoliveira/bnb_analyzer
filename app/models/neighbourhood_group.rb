@@ -8,6 +8,7 @@ class NeighbourhoodGroup < ApplicationRecord
 
   has_many :neighbourhoods
   has_many :air_bnbs, through: :neighbourhoods
+  has_many :multiple_dwelling_registrations
 
   validates :name, presence: true, uniqueness: true
 

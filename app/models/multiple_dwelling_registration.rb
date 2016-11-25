@@ -1,5 +1,7 @@
 class MultipleDwellingRegistration < ApplicationRecord
 
+  belongs_to :neighbourhood_group
+
   validates :registration_id,
             :boro,
             :boro_id,

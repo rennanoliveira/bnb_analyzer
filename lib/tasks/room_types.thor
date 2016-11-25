@@ -18,4 +18,17 @@ class RoomTypes < Thor
     puts 'Processo finalizado!'
   end
 
+  desc 'fix_neighbourhoods',
+       'Associates AirBnb data to Neighbourhoods'
+  def fix_neighbourhoods
+    puts 'Associando Neighbourhoods..'
+    Neighbourhood.all.each do |neighbourhood|
+      puts "Associando #{neighbourhood.name}"
+      ::AirBnb.
+          where(neighbourhood_cleansed: neighbourhood.name).
+          update_all(neighbourhood_id: neighbourhood.id)
+    end
+    puts 'Processo finalizado!'
+  end
+
 end

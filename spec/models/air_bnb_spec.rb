@@ -4,6 +4,7 @@ RSpec.describe AirBnb, type: :model do
 
   describe 'relations' do
     it { is_expected.to belong_to :room_type }
+    it { is_expected.to belong_to :neighbourhood }
   end
 
   describe 'validations' do

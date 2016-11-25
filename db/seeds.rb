@@ -1,7 +1,8 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+room_types = [
+    {name: 'Private room'},
+    {name: 'Entire home/apt'},
+    {name: 'Shared room'}
+]
+existing_room_types = RoomType.pluck(:name)
+RoomType.create(room_types.select {|r| !r[:name].in?(existing_room_types) })
+

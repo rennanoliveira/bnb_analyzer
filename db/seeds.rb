@@ -5,7 +5,7 @@ room_types = [
     {name: 'Shared room'}
 ]
 existing_room_types = RoomType.pluck(:name)
-RoomType.create(room_types.select {|r| !r[:name].in?(existing_room_types) })
+RoomType.create(room_types.select { |r| !r[:name].in?(existing_room_types) })
 
 # Populating Neighbourhood Groups
 neighbourhood_groups = [
@@ -18,7 +18,7 @@ neighbourhood_groups = [
 existing_neighbourhood_groups = NeighbourhoodGroup.pluck(:name)
 NeighbourhoodGroup.create(
     neighbourhood_groups.
-        select {|r| !r[:name].in?(existing_neighbourhood_groups) }
+        select { |r| !r[:name].in?(existing_neighbourhood_groups) }
 )
 
 # Populating Neighbourhoods
@@ -238,5 +238,18 @@ neighbourhoods = [
 existing_neighbourhoods = Neighbourhood.pluck(:name)
 Neighbourhood.create(
     neighbourhoods.
-        select {|r| !r[:name].in?(existing_neighbourhoods) }
+        select { |r| !r[:name].in?(existing_neighbourhoods) }
 )
+
+# Associating Neighborhoods with NeighbourhoodGroups
+# (Only worked when AirBnb had neighbourhood_group_cleansed and neighbourhood_cleansed)
+# AirBnb.
+#     select(:neighbourhood_group_cleansed, :neighbourhood_cleansed).
+#     uniq(:neighbourhood_cleansed).
+#     map { |el| [el[:neighbourhood_cleansed], el[:neighbourhood_group_cleansed]] }.
+#     each do |neighbourhood_with_group|
+#   Neighbourhood.
+#       where(name: neighbourhood_with_group[0]).
+#       first.
+#       update_attribute('neighbourhood_group_id', NeighbourhoodGroup.where(name: neighbourhood_with_group[1]).first.id )
+# end

@@ -19,4 +19,12 @@ class MultipleDwellingRegistration < ApplicationRecord
             :registered_on,
             :registration_ends_on, presence: true
 
+  scope :without_geocode, -> {
+    where(latitude: nil)
+  }
+
+  def full_address
+    "#{house_number} #{address_street}, #{boro}, NYC, #{zip_code}"
+  end
+
 end

@@ -20,10 +20,15 @@ module Geocoders
               parsed_response)
     end
 
+    def is_ok?(hash)
+      hash['status'] == 'OK'
+    end
+
     private
 
     def formatted_response(response)
       result = ActiveSupport::HashWithIndifferentAccess.new(status: response['status'])
+      puts response['status']
       if response['status'] == 'OK'
         result[:location] = response['results'][0]['geometry']['location']
       end

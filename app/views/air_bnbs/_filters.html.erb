@@ -1,0 +1,26 @@
+<div>
+  <h2>Filter</h2>
+  <%= form_tag air_bnbs_path, method: :get do %>
+      <div>
+        <%= label_tag :minimum_nights %>
+        <%= text_field_tag :minimum_nights, params[:minimum_nights] %>
+      </div>
+      <div>
+        <%= label_tag :minimum_rating %>
+        <%= text_field_tag :minimum_rating , params[:minimum_rating] %>
+      </div>
+      <div>
+        <%= label_tag :neighbourhood_group %>
+        <%= select_tag :neighbourhood_group,
+                       options_from_collection_for_select(
+                           @air_bnb_filter.neighbourhood_groups,
+                           :id,
+                           :name,
+                           params[:neighbourhood_group]
+                       ), include_blank: 'All' %>
+      </div>
+      <div>
+        <%= submit_tag 'Filter' %>
+      </div>
+  <% end %>
+</div>

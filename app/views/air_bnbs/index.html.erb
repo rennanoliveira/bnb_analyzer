@@ -1,0 +1,25 @@
+<h1>Air Bnb Listings</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Property Type</th>
+    <th>Minimum Nights</th>
+    <th>Location</th>
+    <th>Rating</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+  </tr>
+  <% @air_bnb_filter.bnbs.each do |bnb| %>
+  <tr>
+    <td><%= link_to(bnb.name, bnb.listing_url) %></td>
+    <td><%= bnb.property_type %></td>
+    <td><%= bnb.minimum_nights %></td>
+    <td><%= bnb.smart_location %></td>
+    <td><%= bnb.review_scores_rating %></td>
+    <td><%= bnb.latitude %></td>
+    <td><%= bnb.longitude %></td>
+  </tr>
+  <% end %>
+</table>
+<%= paginate(@air_bnb_filter.bnbs) %>

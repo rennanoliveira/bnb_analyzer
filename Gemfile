@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'httparty'
+gem 'kaminari'
 
 # for seeds
 gem 'thor-rails'

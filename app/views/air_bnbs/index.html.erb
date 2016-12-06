@@ -8,7 +8,8 @@
     <tr>
       <th>Name</th>
       <th>Property Type</th>
-      <th>Minimum Nights</th>
+      <th>Room Type</th>
+      <th>Min. Nights</th>
       <th>Location</th>
       <th>Rating</th>
       <th>Latitude</th>
@@ -18,6 +19,7 @@
         <tr>
           <td><%= link_to(bnb.name, bnb.listing_url) %></td>
           <td><%= bnb.property_type %></td>
+          <td><%= bnb.room_type_name %></td>
           <td><%= bnb.minimum_nights %></td>
           <td><%= bnb.smart_location %></td>
           <td><%= bnb.review_scores_rating %></td>

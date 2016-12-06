@@ -10,6 +10,16 @@
         <%= text_field_tag :minimum_rating , params[:minimum_rating] %>
       </div>
       <div>
+        <%= label_tag :room_type %>
+        <%= select_tag :room_type,
+                       options_from_collection_for_select(
+                           @air_bnb_filter.room_types,
+                           :id,
+                           :name,
+                           params[:room_type]
+                       ), include_blank: 'All' %>
+      </div>
+      <div>
         <%= label_tag :neighbourhood_group %>
         <%= select_tag :neighbourhood_group,
                        options_from_collection_for_select(

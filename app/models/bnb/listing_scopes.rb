@@ -14,5 +14,9 @@ module Bnb
       where('review_scores_rating >= ?', minimum_rating)
     end
 
+    def by_room_type(room_type_id)
+      where(room_type_id: room_type_id)
+    end
+
   end
 end

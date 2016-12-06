@@ -5,6 +5,8 @@ class AirBnb < ApplicationRecord
 
   validates :latitude, presence: true
   validates :longitude, presence: true
+
+  # delegate :name, to: :room_type, prefix: true
   
 
 end

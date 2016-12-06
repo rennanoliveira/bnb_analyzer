@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127204111) do
+ActiveRecord::Schema.define(version: 20161206195348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,7 +66,9 @@ ActiveRecord::Schema.define(version: 20161127204111) do
     t.datetime "updated_at",                                            null: false
     t.integer  "room_type_id"
     t.integer  "neighbourhood_id"
+    t.integer  "property_type_id"
     t.index ["neighbourhood_id"], name: "index_air_bnbs_on_neighbourhood_id", using: :btree
+    t.index ["property_type_id"], name: "index_air_bnbs_on_property_type_id", using: :btree
   end
 
   create_table "multiple_dwelling_registrations", force: :cascade do |t|
@@ -106,6 +108,10 @@ ActiveRecord::Schema.define(version: 20161127204111) do
     t.datetime "updated_at",             null: false
     t.integer  "neighbourhood_group_id"
     t.index ["neighbourhood_group_id"], name: "index_neighbourhoods_on_neighbourhood_group_id", using: :btree
+  end
+
+  create_table "property_types", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "room_types", force: :cascade do |t|

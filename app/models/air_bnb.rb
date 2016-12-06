@@ -10,5 +10,4 @@ class AirBnb < ApplicationRecord
   delegate :name, to: :property_type, prefix: true, allow_nil: true
   delegate :name, to: :room_type, prefix: true
 
-
 end

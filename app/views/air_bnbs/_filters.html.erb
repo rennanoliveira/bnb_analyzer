@@ -1,36 +1,50 @@
-<div>
-  <h2>Filter</h2>
-  <%= form_tag air_bnbs_path, method: :get do %>
-      <div>
-        <%= label_tag :minimum_nights %>
-        <%= text_field_tag :minimum_nights, params[:minimum_nights] %>
-      </div>
-      <div>
-        <%= label_tag :minimum_rating %>
-        <%= text_field_tag :minimum_rating , params[:minimum_rating] %>
-      </div>
-      <div>
-        <%= label_tag :room_type %>
-        <%= select_tag :room_type,
-                       options_from_collection_for_select(
-                           @air_bnb_filter.room_types,
-                           :id,
-                           :name,
-                           params[:room_type]
-                       ), include_blank: 'All' %>
-      </div>
-      <div>
-        <%= label_tag :neighbourhood_group %>
-        <%= select_tag :neighbourhood_group,
-                       options_from_collection_for_select(
-                           @air_bnb_filter.neighbourhood_groups,
-                           :id,
-                           :name,
-                           params[:neighbourhood_group]
-                       ), include_blank: 'All' %>
-      </div>
-      <div>
-        <%= submit_tag 'Filter' %>
-      </div>
+<div class="well bs-component">
+  <%= form_tag air_bnbs_path, method: :get, class: 'form-horizontal' do %>
+      <fieldset>
+        <legend>Filter results</legend>
+        <div class="form-group">
+          <%= label_tag :minimum_nights, 'Minimum Nights', class: 'col-lg-3 control-label' %>
+          <div class="col-lg-9">
+            <%= text_field_tag :minimum_nights, params[:minimum_nights], class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= label_tag :minimum_rating, 'Minimum Rating', class: 'col-lg-3 control-label' %>
+          <div class="col-lg-9">
+            <%= text_field_tag :minimum_rating, params[:minimum_rating], class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= label_tag :neighbourhood_group, 'Neighbourhood Group', class: 'col-lg-3 control-label' %>
+          <div class="col-lg-9">
+            <%= select_tag :neighbourhood_group,
+                           options_from_collection_for_select(
+                               @air_bnb_filter.neighbourhood_groups,
+                               :id,
+                               :name,
+                               params[:neighbourhood_group]
+                           ), include_blank: 'All',
+                           class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= label_tag :room_type, 'Room Type', class: 'col-lg-3 control-label' %>
+          <div class="col-lg-9">
+            <%= select_tag :room_type,
+                           options_from_collection_for_select(
+                               @air_bnb_filter.room_types,
+                               :id,
+                               :name,
+                               params[:room_type]
+                           ), include_blank: 'All',
+                           class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-9 col-lg-offset-3">
+            <button type="submit" class="btn btn-primary">Filter</button>
+          </div>
+        </div>
+      </fieldset>
   <% end %>
 </div>

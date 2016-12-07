@@ -3,18 +3,6 @@
       <fieldset>
         <legend>Filter results</legend>
         <div class="form-group">
-          <%= label_tag :minimum_nights, 'Minimum Nights', class: 'col-lg-3 control-label' %>
-          <div class="col-lg-9">
-            <%= text_field_tag :minimum_nights, params[:minimum_nights], class: 'form-control' %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= label_tag :minimum_rating, 'Minimum Rating', class: 'col-lg-3 control-label' %>
-          <div class="col-lg-9">
-            <%= text_field_tag :minimum_rating, params[:minimum_rating], class: 'form-control' %>
-          </div>
-        </div>
-        <div class="form-group">
           <%= label_tag :neighbourhood_group, 'Neighbourhood Group', class: 'col-lg-3 control-label' %>
           <div class="col-lg-9">
             <%= select_tag :neighbourhood_group,
@@ -38,6 +26,31 @@
                                params[:room_type]
                            ), include_blank: 'All',
                            class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= label_tag :property_type, 'Property Type', class: 'col-lg-3 control-label' %>
+          <div class="col-lg-9">
+            <%= select_tag :property_type,
+                           options_from_collection_for_select(
+                               @air_bnb_filter.property_types,
+                               :id,
+                               :name,
+                               params[:property_type]
+                           ), include_blank: 'All',
+                           class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= label_tag :minimum_nights, 'Minimum Nights', class: 'col-lg-3 control-label' %>
+          <div class="col-lg-9">
+            <%= text_field_tag :minimum_nights, params[:minimum_nights], class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= label_tag :minimum_rating, 'Minimum Rating', class: 'col-lg-3 control-label' %>
+          <div class="col-lg-9">
+            <%= text_field_tag :minimum_rating, params[:minimum_rating], class: 'form-control' %>
           </div>
         </div>
         <div class="form-group">

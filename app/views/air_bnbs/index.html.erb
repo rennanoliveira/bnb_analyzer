@@ -13,7 +13,7 @@
     </div>
     <div class="col-lg-8">
       <h2> Results</h2>
-      <table>
+      <table class="table table-striped">
         <tr>
           <th>Name</th>
           <th>Property Type</th>
@@ -31,7 +31,7 @@
               <td><%= bnb.room_type_name %></td>
               <td><%= bnb.minimum_nights %></td>
               <td><%= bnb.smart_location %></td>
-              <td><%= bnb.review_scores_rating %></td>
+              <td><%= safe_p bnb.review_scores_rating %></td>
               <td><%= bnb.latitude %></td>
               <td><%= bnb.longitude %></td>
             </tr>

@@ -7,6 +7,7 @@ module Bnb
       @neighbourhood_group = params[:neighbourhood_group]
       @minimum_rating = params[:minimum_rating]
       @room_type = params[:room_type]
+      @property_type = params[:property_type]
     end
 
     def bnbs
@@ -25,9 +26,13 @@ module Bnb
       RoomType.all
     end
 
+    def property_types
+      PropertyType.all
+    end
+
     private
 
-    attr_reader :page, :minimum_nights, :neighbourhood_group, :minimum_rating, :room_type
+    attr_reader :page, :minimum_nights, :neighbourhood_group, :minimum_rating, :room_type, :property_type
 
     def base_query
       @bnbs = AirBnb.all.extending(ListingScopes).includes(:room_type, :property_type).page(page)
@@ -35,6 +40,7 @@ module Bnb
       @bnbs = @bnbs.minimum_nights_less_than(minimum_nights) if minimum_nights.present?
       @bnbs = @bnbs.rating_is_at_least(minimum_rating) if minimum_rating.present?
       @bnbs = @bnbs.by_room_type(room_type) if room_type.present?
+      @bnbs = @bnbs.by_property_type(property_type) if property_type.present?
       @bnbs
     end
 

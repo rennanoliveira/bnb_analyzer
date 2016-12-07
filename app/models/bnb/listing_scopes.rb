@@ -18,5 +18,9 @@ module Bnb
       where(room_type_id: room_type_id)
     end
 
+    def by_property_type(property_type_id)
+      where(property_type_id: property_type_id)
+    end
+
   end
 end

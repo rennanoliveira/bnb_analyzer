@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="page-header">
-        <h1 id="forms">AirBnb Data</h1>
+        <h1>AirBnb Data</h1>
       </div>
     </div>
   </div>
@@ -12,34 +12,21 @@
       <%= render 'filters' %>
     </div>
     <div class="col-lg-8">
-      <h2> Results</h2>
-      <table class="table table-striped">
-        <tr>
-          <th>Name</th>
-          <th>Property Type</th>
-          <th>Room Type</th>
-          <th>Min. Nights</th>
-          <th>Location</th>
-          <th>Rating</th>
-          <th>Latitude</th>
-          <th>Longitude</th>
-        </tr>
-        <% @air_bnb_filter.bnbs.each do |bnb| %>
-            <tr>
-              <td><%= link_to(bnb.name, bnb.listing_url) %></td>
-              <td><%= bnb.property_type_name %></td>
-              <td><%= bnb.room_type_name %></td>
-              <td><%= bnb.minimum_nights %></td>
-              <td><%= bnb.smart_location %></td>
-              <td><%= safe_p bnb.review_scores_rating %></td>
-              <td><%= bnb.latitude %></td>
-              <td><%= bnb.longitude %></td>
-            </tr>
-        <% end %>
-      </table>
-      <%= paginate(@air_bnb_filter.bnbs) %>
-
-
+      <div class="bs-component">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#table" data-toggle="tab">Table</a></li>
+          <li><a href="#profile" data-toggle="tab">Stats</a></li>
+          <li class="disabled"><a>Others</a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade active in" id="table">
+            <%= render 'table' %>
+          </div>
+          <div class="tab-pane fade" id="profile">
+            <p>TODO</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

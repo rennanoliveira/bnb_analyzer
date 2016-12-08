@@ -13,5 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require highcharts
+//= require chartkick
 //= require turbolinks
 //= require_tree .

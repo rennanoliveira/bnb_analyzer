@@ -1,0 +1,22 @@
+<div class="well well-lg">
+  <h2>Geocoding progress for <%= name %>:</h2>
+
+  <div class="progress progress-striped">
+    <div class="progress-bar"
+         role="progressbar"
+         aria-valuenow="<%= data.conversion_percentage.floor.to_s %>"
+         aria-valuemin="0"
+         aria-valuemax="100"
+         style="min-width: 2em; width: <%= data.conversion_percentage %>%">
+      <%= data.conversion_percentage.floor %>%
+    </div>
+  </div>
+
+
+  <!--<div class="progress progress-striped active">-->
+  <!--<div class="progress-bar" style="width: <%#= nyc_data.conversion_percentage %>%"></div>-->
+  <!--</div>-->
+  <p>Total: <%= format_number(data.total_data) %> units.</p>
+  <p>Converted Amount: <%= format_number(data.converted_data) %> units.</p>
+  <p>Amount left: <%= format_number(data.total_data - data.converted_data) %> units.</p>
+</div>

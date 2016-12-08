@@ -1,1 +1,115 @@
-<h1>Home</h1>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="page-header">
+      <h1>What is the Bnb Analyzer?</h1>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <h2>The Data</h2>
+    <p>
+      This project aims to analyze Air Bnb data for New York City, provided by
+      <%= link_to 'InsideAirBnb.com', 'insideairbnb.com/about.html' %>.
+    </p>
+    <p>
+      According to the site, this data was collected from public AirBnb listings,
+      and the data used on Bnb Analyzer is a snapshot scraped on July 02, 2016.
+    </p>
+    <p>
+      This project also uses the Multiple Dwelling Registration data, provided by
+      <%= link_to 'NYC Open Data', 'https://data.cityofnewyork.us/' %>.
+    </p>
+    <p>"Property owners of residential buildings are required by law to register annually with HPD if the property is a
+      multiple dwelling (3+ residential units) or a private dwelling (1-2 residential units) where neither the owner nor
+      the owner's immediate family resides."
+      <%= link_to '- NYC Housing Preservation & Development', 'http://www1.nyc.gov/site/hpd/owners/compliance-register-your-property.page' %>
+      .
+    </p>
+  </div>
+  <div class="col-lg-12">
+    <h2>Who are we?</h2>
+    <p>
+      We are Jorge Felipe Campos Chagas and Rennan Maciel de Oliveira,
+      two undergraduates currently studying Computer Science and Information Systems,
+      respectively, on Universidade Federal Fluminense.
+      This is our final project for the 'Urban Computing' class,
+      co-lectured by Antonio Augusto de Aragão Rocha and
+    </p>
+  </div>
+  <div class="col-lg-12">
+    <h2>Our Goals</h2>
+    <p>
+      Get an A+.
+    </p>
+    <p>
+      Kidding. Well, it's that too, but our project goal is analyzing AirBnb Data, trying to extract statistics
+      and check if AirBnb hosts are in compliance with New York City's strict house renting rules.
+      Read more about AirBnb's privacy policy <%= link_to 'here', about_air_bnb_path %>.
+      Mainly, we expect to check how many units comply to the minimum nights rule from the NYC Government and
+      how many units are possibly unregistered on the city's Multiple Dwelling Registration.
+      If all goes well, in the end we will also check simple statistics like average ratings by neighbourhood, etc.
+    </p>
+  </div>
+  <div class="col-lg-12">
+    <h2>How we <i>dunnit</i></h2>
+    <ol>
+      <li>
+        <p>
+          READ THE BNB DATA -
+          We extracted a .csv file from InsideAirBnb and read it into our
+          <%= link_to 'PostgreSQL Database', 'https://www.postgresql.org/' %>.
+          We chose postgres due to it being open source, light, and having
+          <%= link_to 'PostGIS', 'http://www.postgis.net/' %>, which aids us with spatial data (geocodes).
+        </p>
+      </li>
+      <li>
+        <p>
+          NORMALIZE THE DATA -
+          We created tables to help us normalize the data, relating AirBnb listings to
+          <i>Neighbourhood Groups</i>, <i>Neighbourhoods</i>, <i>Room Types</i> and <i>Property Types</i>.
+          This was done so we could filter the listings as we saw fit.
+        </p>
+      </li>
+      <li>
+        <p>
+          READ THE MULTIPLE DWELLING REGISTRATION DATA -
+          We extracted a .csv file from NYC Open Data, saving it to the database.
+          Quite a few enhancements had to be made to the ruby script reading the csv file,
+          as not all data was standardized (iex: dates).
+        </p>
+      </li>
+      <li>
+        <p>
+          NORMALIZE THE DATA... ROUND 2 -
+          We associated the data with the <i>Neighbourhood Groups</i> and <i>Neighbourhoods</i> created for the BnbData,
+          helping us compare data between the two.
+        </p>
+      </li>
+      <li>
+        <p>
+          GEOCODE THE DATA -
+          The Bnb data had <i>geocoding</i> (latitudes and longitudes), whilst NYC Data had city names and address.
+          Using a ruby script, googlemaps' geocoding service and <i>api_keys</i> generated from a LOT of our
+          contributers,
+          we began processing the NYC Data, geocoding it.
+          This script itself deserves a lengthy explanation and perhaps a mini-paper explaining all the workarounds
+          regarding
+          google query limits, multiple api_keys, server/connection downtime and unprocessable addresses.
+        </p>
+      </li>
+      <li>
+        <p>
+          BUILD THE APP -
+          A Ruby on Rails web application (this one) was created,
+          to organize all the data and help us with geocoding progress, filterings,
+          easy stats gerenations with any filters we required.
+          This took a while, but all code was done caring for best practices,
+          following SOLID patterns as well as we knew how to aid us with our rudimentary programming skills :).
+          The code is available publicly on
+          github, <%= link_to 'here', 'https://github.com/rennanoliveira/bnb_analyzer' %>.
+        </p>
+      </li>
+    </ol>
+  </div>
+</div>

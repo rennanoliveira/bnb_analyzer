@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'httparty'
 gem 'kaminari'
 gem 'chartkick'
+gem 'jquery-turbolinks'
 
 # styling
 gem 'bootstrap-sass'

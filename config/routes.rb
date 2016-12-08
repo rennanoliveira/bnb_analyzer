@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :air_bnbs, only: [:index]
+  resources :dwellings, only: [:index]
+
   resource :geocoder, only: [:show]
 
 end

@@ -23,6 +23,8 @@ class MultipleDwellingRegistration < ApplicationRecord
     where(latitude: nil)
   }
 
+  delegate :name, to: :neighbourhood_group, prefix: true
+
   def full_address
     "#{house_number} #{address_street}, #{boro}, NYC, #{zip_code}"
   end

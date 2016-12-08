@@ -1,0 +1,21 @@
+<table class="table table-striped">
+  <tr>
+    <th>Street</th>
+    <th>House Number</th>
+    <th>Neighbourhood</th>
+    <th>Expires at</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+  </tr>
+  <% @mdr_filter.dwellings.each do |dwelling| %>
+      <tr>
+        <td><%= dwelling.address_street %></td>
+        <td><%= dwelling.house_number %></td>
+        <td><%= dwelling.boro %></td>
+        <td><%= safe_l dwelling.registration_ends_on %></td>
+        <td><%= safe_p dwelling.latitude %></td>
+        <td><%= safe_p dwelling.longitude %></td>
+      </tr>
+  <% end %>
+</table>
+<%= paginate(@mdr_filter.dwellings) %>

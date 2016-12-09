@@ -33,6 +33,10 @@ module Bnb
       where('review_scores_rating between ? and ?', rating_start, rating_end).count
     end
 
+    def top_hosts(quantity)
+      group(:host_id).count(:id).values.sort.reverse.first(quantity)
+    end
+
   end
 end
 

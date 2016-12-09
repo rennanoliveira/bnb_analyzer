@@ -117,4 +117,17 @@
     </div>
   </div>
 
+  <div class="col-md-12">
+    <div class="well well-lg">
+      <h3>Top Hosts:</h3>
+      <p>(Listings grouped by host ID)</p>
+      <ol>
+        <% @air_bnb_stats.top_hosts.each do |amount| %>
+            <li>Registered Listings: <%= amount %>.</li>
+        <% end %>
+      </ol>
+
+    </div>
+  </div>
+
 </div>

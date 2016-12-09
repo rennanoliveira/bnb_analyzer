@@ -43,6 +43,10 @@ module Bnb
       }
     end
 
+    def top_hosts
+      base_query.top_hosts(5)
+    end
+
     private
 
     def base_query

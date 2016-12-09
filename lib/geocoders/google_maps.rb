@@ -20,6 +20,10 @@ module Geocoders
               parsed_response)
     end
 
+    def is_valid?(hash)
+      hash['status'].in? ['OK', 'ZERO_RESULTS']
+    end
+
     def is_ok?(hash)
       hash['status'] == 'OK'
     end

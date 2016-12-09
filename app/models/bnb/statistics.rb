@@ -44,7 +44,7 @@ module Bnb
     end
 
     def top_hosts
-      base_query.top_hosts(5)
+      base_query.top_hosts(5).map
     end
 
     private

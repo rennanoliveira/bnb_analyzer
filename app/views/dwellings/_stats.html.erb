@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="well well-lg">
+      <h3>Property Types:</h3>
+      <h4>Total: <%= format_number @dwelling_stats.total %> units.</h4>
+      <%= pie_chart @dwelling_stats.by_situation, width: '55%', height: '70%', library: {
+          tooltip: {
+              pointFormat: '<b>{point.y}</b>'
+          },
+          plotOptions: {
+              pie: {
+                  allowPointSelect: true,
+                  cursor: 'pointer',
+                  dataLabels: {
+                      enabled: true,
+                      format: '<b>{point.name}</b>',
+                  },
+                  showInLegend: true
+              }
+          }
+      } %>
+
+    </div>
+  </div>
+
+
+
+</div>

@@ -24,8 +24,8 @@ module Geocoders
     def mass_geocode(collection, api_key)
       collection.without_geocode.limit(LIMIT).each do |object|
         geocode_hash = geocoder.location_for(object.full_address, api_key)
-        return unless geocoder.is_ok?(geocode_hash)
-        update_geocode(object, geocode_hash)
+        return unless geocoder.is_valid?(geocode_hash)
+        update_geocode(object, geocode_hash) if geocoder.is_ok?(geocode_hash)
       end
     end
 

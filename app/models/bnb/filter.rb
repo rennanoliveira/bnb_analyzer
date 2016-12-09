@@ -14,10 +14,6 @@ module Bnb
       base_query.page(page)
     end
 
-    def statistics
-      # Ranking::base_query
-    end
-
     def neighbourhood_groups
       NeighbourhoodGroup.all
     end

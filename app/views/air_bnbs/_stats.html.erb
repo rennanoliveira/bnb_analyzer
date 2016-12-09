@@ -1,0 +1,120 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="well well-lg">
+      <p class="text-danger">Important: Graphs can only be filtered by Neighbourhood Groups.</p>
+
+      <h3>Minimum Nights:</h3>
+      <% minimum_nights = @air_bnb_stats.by_minimum_nights %>
+      <div class="progress">
+        <div class="progress-bar progress-bar-danger"
+             style="width: <%= perc_calc(minimum_nights[:less_than_3_days], @air_bnb_stats.total) %>%"></div>
+        <div class="progress-bar progress-bar-warning"
+             style="width: <%= perc_calc((minimum_nights[:less_than_a_month] - minimum_nights[:less_than_3_days]), @air_bnb_stats.total) %>%"></div>
+        <div class="progress-bar progress-bar-success"
+             style="width: <%= perc_calc((@air_bnb_stats.total - minimum_nights[:less_than_a_month]), @air_bnb_stats.total) %>%"></div>
+      </div>
+      <p class="text-danger">Less than 3 days: <%= format_number minimum_nights[:less_than_3_days] %></p>
+      <p class="text-warning">Less than 30 days: <%= format_number minimum_nights[:less_than_a_month] %></p>
+      <p class="text-success">More than 30
+        days: <%= format_number(@air_bnb_stats.total - minimum_nights[:less_than_a_month]) %></p>
+      <p>Total: <%= format_number @air_bnb_stats.total %></p>
+
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="well well-lg">
+      <h3>Ratings:</h3>
+      <%= column_chart @air_bnb_stats.by_stars, width: '55%', height: '70%', library: {
+          tooltip: {
+              pointFormat: '<b>{point.y}</b>'
+          },
+          plotOptions: {
+              pie: {
+                  allowPointSelect: true,
+                  cursor: 'pointer',
+                  dataLabels: {
+                      enabled: true,
+                      format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                  },
+                  showInLegend: true
+              }
+          }
+      } %>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="well well-lg">
+      <% if @air_bnb_stats.neighbourhood_group %>
+          <h3>By Neighbourhood:</h3>
+      <% else %>
+          <h3>By Neighbourhood Group:</h3>
+      <% end %>
+      <%= pie_chart @air_bnb_stats.by_neighbourhood, width: '55%', height: '70%', library: {
+          tooltip: {
+              pointFormat: '<b>{point.y}</b>'
+          },
+          plotOptions: {
+              pie: {
+                  allowPointSelect: true,
+                  cursor: 'pointer',
+                  dataLabels: {
+                      enabled: true,
+                      format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                  },
+                  showInLegend: true
+              }
+          }
+      } %>
+
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="well well-lg">
+      <h3>Property Types:</h3>
+      <%= pie_chart @air_bnb_stats.by_property_type, width: '55%', height: '70%', library: {
+          tooltip: {
+              pointFormat: '<b>{point.y}</b>'
+          },
+          plotOptions: {
+              pie: {
+                  allowPointSelect: true,
+                  cursor: 'pointer',
+                  dataLabels: {
+                      enabled: true,
+                      format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                  },
+                  showInLegend: true
+              }
+          }
+      } %>
+
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="well well-lg">
+      <h3>Privacy:</h3>
+      <%= pie_chart @air_bnb_stats.by_room_type, width: '55%', height: '70%', library: {
+          tooltip: {
+              pointFormat: '<b>{point.y}</b>'
+          },
+          plotOptions: {
+              pie: {
+                  allowPointSelect: true,
+                  cursor: 'pointer',
+                  dataLabels: {
+                      enabled: true,
+                      format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                  },
+                  showInLegend: true
+              }
+          }
+      } %>
+
+    </div>
+  </div>
+
+</div>

@@ -7,6 +7,32 @@ module Bnb
           count(:id)
     end
 
+    def grouped_by_neighbourhood_group
+      joins(neighbourhood: :neighbourhood_group).
+          group('neighbourhood_groups.name').
+          count(:id)
+    end
+
+    def grouped_by_neighbourhood
+      joins(:neighbourhood).
+          group('neighbourhoods.name').
+          count(:id)
+    end
+
+    def grouped_by_room_types
+      joins(:room_type).
+          group('room_types.name').
+          count(:id)
+    end
+
+    def without_ratings
+      where(review_scores_rating: nil).count
+    end
+
+    def between_ratings(rating_start, rating_end)
+      where('review_scores_rating between ? and ?', rating_start, rating_end).count
+    end
+
   end
 end
 

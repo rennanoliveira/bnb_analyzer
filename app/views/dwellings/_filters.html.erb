@@ -26,6 +26,17 @@
         </div>
         <div class="form-group">
           <div class="col-lg-9 col-lg-offset-3">
+            <div class="checkbox">
+              <label>
+                <%= check_box_tag :geocode, '1', params[:geocode] %>
+                View only geocoded data
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-9 col-lg-offset-3">
             <button type="submit" class="btn btn-primary">Filter</button>
           </div>
         </div>

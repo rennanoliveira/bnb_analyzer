@@ -11,4 +11,8 @@ module ApplicationHelper
   def format_number(number)
     number_with_delimiter(number, delimiter: '.')
   end
+
+  def perc_calc(value1, value2)
+    value1/value2.to_f * 100
+  end
 end

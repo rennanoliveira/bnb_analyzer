@@ -17,7 +17,7 @@
 ## Populating the database:
 
 To populate AirBnb Data:
-Go to the [AirBnb data page](insideairbnb.com/get-the-data.html).
+Go to the [InsideAirBnb data page](insideairbnb.com/get-the-data.html).
 Scroll down to New York City data, download `listings.csv.gz`.
 Extract the file on your computer.
 On the console, run:
